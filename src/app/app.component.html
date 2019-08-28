@@ -1,0 +1,19 @@
+
+<canvas #stage width="300" height="300"></canvas>
+
+<h4>Select Color</h4>
+<input [colorPicker]="color" [style.background]="color" class="color-picker" (colorPickerChange)="selectColor($event)"/>
+
+<br />
+
+<h4>Select Shape</h4>
+<mat-select [ngModel]="shape" (ngModelChange)="selectShange($event)">
+  <mat-option value="rectangle">Rectangle</mat-option>
+  <mat-option value="triangle">Triangle</mat-option>
+  <mat-option value="circle">Circle</mat-option>
+</mat-select>
+
+<br />
+<br />
+
+ <button mat-raised-button color="basic" (click)="undo()">Undo</button>
