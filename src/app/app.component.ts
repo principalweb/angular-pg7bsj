@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.shape = res.shape || 'rectangle';
       this.color = res.color || 'red';
 
-      this.update();
+      this.updateShapeColor();
     })
   }
 
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.update();
+    this.updateShapeColor();
   }
 
   ngOnDestroy() {
@@ -43,13 +43,13 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  selectShange(evt) {
+  selectShange(evt: string) {
     this.store.dispatch(new ChangeShape({
       shape: evt
     }));
   }
 
-  selectColor(evt) {
+  selectColor(evt: string) {
     this.store.dispatch(new ChangeColor({
       color: evt
     }));
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.store.dispatch(new UndoChange());
   }
 
-  update() {
+  updateShapeColor() {
     if (this.canvas) {
       const canvasDom = this.canvas.nativeElement;
       const ctx = canvasDom.getContext('2d');
